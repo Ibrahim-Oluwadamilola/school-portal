@@ -1,0 +1,16 @@
+{
+  "name": "school-portal",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Ibrahim-Oluwadamilola/school-portal.git",
+  "author": "Damilola Ibrahim <ibrahimblessing202@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "client": "cd ./client && yarn run dev",
+    "server": "cd ./server && yarn run server",
+    "start": "concurrently \"yarn run server\" \"yarn run client\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

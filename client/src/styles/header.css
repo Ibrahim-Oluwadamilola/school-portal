@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5%;
+  padding: 1rem;
+  background-color: rgb(48, 48, 48);
+  color: white;
+}
+
+.header__logo {
+  font-size: #000;
+}
+
+.header__group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header__group p {
+  cursor: pointer;
+}
+
+.header__group p:hover {
+  color: #a37f7f;
+}
