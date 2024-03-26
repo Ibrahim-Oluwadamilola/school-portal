@@ -7,6 +7,7 @@ import Login from "./components/Login.jsx";
 import Home from "./components/Home.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
 import About from "./components/About";
+import Dashboard from "./components/Dashboard.jsx";
 import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <About />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ]);
 
