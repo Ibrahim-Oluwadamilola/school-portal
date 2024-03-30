@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 // import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "./components/Login.jsx";
-import Home from "./components/Home.jsx";
-import ErrorPage from "./components/ErrorPage.jsx";
-import About from "./components/About";
+import Auth from "./pages/Auth.jsx";
+import Home from "./pages/Home.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
+import About from "./pages/About";
 import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
@@ -16,8 +16,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/login",
-    element: <Login />,
+    path: "/auth",
+    element: <Auth />,
   },
   {
     path: "/about",
