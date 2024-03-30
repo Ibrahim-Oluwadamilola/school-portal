@@ -9,7 +9,8 @@
 }
 
 .header__logo {
-  font-size: #000;
+  color: #ff7b7b;
+  cursor: pointer;
 }
 
 .header__group {

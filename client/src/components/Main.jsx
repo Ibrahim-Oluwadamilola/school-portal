@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
-import { useState } from "react";
 
 import "../styles/main.css";
 
-const BASE_URL = "http://localhost:3005";
-
 const Main = () => {
   const nav = useNavigate();
+
+  const handleClick = () => {
+    // ! TO-DO: navigate to dashboard if already logged-in
+    nav("/auth");
+  };
 
   return (
     <div className="main">
@@ -16,7 +17,7 @@ const Main = () => {
           <p className="main__content__group__text">
             Welcome to the payment portal.
           </p>
-          <button onClick={()=>nav("/dashboard")}>Get Started</button>
+          <button onClick={handleClick}>Get started</button>
         </div>
 
         <div className="main__content__image"></div>

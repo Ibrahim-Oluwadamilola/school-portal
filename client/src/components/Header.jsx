@@ -4,17 +4,16 @@ import "../styles/header.css";
 const Header = () => {
   const nav = useNavigate();
 
-  function handleClick() {
-    nav("/login");
-  }
-
   return (
     <div className="header">
-      <p className="header__logo">SP</p>
+      <p className="header__logo" onClick={() => nav("/")}>
+        SP
+      </p>
+
       <div className="header__group">
         <p onClick={() => nav("/")}>HOME</p>
         <p onClick={() => nav("/about")}>ABOUT</p>
-        <p onClick={handleClick}>LOGIN</p>
+        <p onClick={() => nav("/auth")}>REGISTER</p>
       </div>
     </div>
   );
