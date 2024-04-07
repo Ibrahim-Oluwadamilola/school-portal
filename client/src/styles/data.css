@@ -1,0 +1,18 @@
+.data {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 30%;
+}
+
+.data__group {
+  display: flex;
+  gap: 1rem;
+}
+
+.data__group_text {
+  font-weight: 600;
+}

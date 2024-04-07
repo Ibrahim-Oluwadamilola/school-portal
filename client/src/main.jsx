@@ -7,6 +7,7 @@ import Auth from "./pages/Auth.jsx";
 import Home from "./pages/Home.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import About from "./pages/About";
+import Dashboard from "./pages/Dashboard";
 import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([

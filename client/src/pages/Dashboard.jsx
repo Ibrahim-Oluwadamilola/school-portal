@@ -1,5 +1,11 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import Header from "../components/Header";
+
+import "../styles/dashboard.css";
+import DataTable from "../components/DataTable";
+import { collectionGroup } from "firebase/firestore";
+import { convertLength } from "@mui/material/styles/cssUtils";
 
 const Dashboard = () => {
   const BASE_URL = "http://localhost:3005";
@@ -8,6 +14,31 @@ const Dashboard = () => {
   const [success, setSuccess] = useState(false);
   const [failure, setFailure] = useState(false);
   const [buttonText, setButtonText] = useState("Create Payment Link");
+  const [indx, setIndx] = useState(0);
+
+  const data = [
+    {
+      id: 1,
+      name: "Dami Ibrahim",
+      paymentStatus: "unpaid",
+      outstandingPayment: "5,000",
+      date: "2022-03-28",
+    },
+    {
+      id: 2,
+      name: "Ezekiel Akinola",
+      paymentStatus: "paid",
+      outstandingPayment: "0",
+      date: "2022-03-28",
+    },
+    {
+      id: 3,
+      name: "Guy David",
+      paymentStatus: "unpaid",
+      outstandingPayment: "500,000",
+      date: "2022-03-28",
+    },
+  ];
 
   async function handleClick() {
     if (!loading || !success) {
@@ -53,14 +84,52 @@ const Dashboard = () => {
     }
   }
 
+  const divisions = [
+    { id: 1, title: "Junior Secondary" },
+    { id: 2, title: "Senior Secondary" },
+  ];
+
+  const classObj = {
+    1: ["JSS1", "JSS2", "JSS3"],
+    2: ["SSS1", "SS2", "SSS3"],
+  };
+
+  const displayClass = (id) => {
+    setIndx(id);
+  };
+
   return (
-    <div>
-      <h1>Welcome to the dashboard</h1>
+    <div className="dashboard">
+      <Header />
 
-      <h1>Data</h1>
-      {/* Display student data */}
+      <div className="dashboard__wrapper">
+        <h1 className="dashboard__wrapper__heading">Payment History</h1>
 
-      <button onClick={handleClick}>Get payment link</button>
+        <div className="dashboard__wrapper__list">
+          {divisions.map(({ title, id }) => (
+            <div key={id} className="dashboard__wrapper__list__group">
+              <div className="dashboard__wrapper__list__group__item">
+                <span className="circle" />
+                <p onClick={() => displayClass(id)}>{title}</p>
+              </div>
+
+              {indx == id &&
+                classObj[id]?.map((el, id) => {
+                  return (
+                    <div key={id} className="data-group">
+                      <p className="">{el}</p>
+                      <DataTable data={data} />
+                    </div>
+                  );
+                })}
+            </div>
+          ))}
+        </div>
+
+        {/* <button onClick={handleClick} className="dashboard__wrapper__button">
+          Get payment link
+        </button> */}
+      </div>
     </div>
   );
 };
