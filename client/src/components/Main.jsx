@@ -1,13 +1,20 @@
 import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
 
 import "../styles/main.css";
+import { auth } from "../config/firebase";
 
 const Main = () => {
   const nav = useNavigate();
+  let isUser = false;
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) isUser = true;
+  });
 
   const handleClick = () => {
-    // ! TO-DO: navigate to dashboard if already logged-in
-    nav("/auth");
+    if (isUser) nav("/dashboard/history");
+    else nav("/auth/register");
   };
 
   return (

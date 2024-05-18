@@ -11,9 +11,8 @@ import {
 import "../styles/form.css";
 
 const LoginForm = () => {
-  const [text, setText] = useState("Login");
-  const [user, loading, error] = useAuthState(auth);
   const nav = useNavigate();
+  const [user, loading, error] = useAuthState(auth);
 
   const [form, setForm] = useState({
     email: "",
@@ -23,17 +22,19 @@ const LoginForm = () => {
   function handleChange(event) {
     const { name, value } = event.target;
     setForm({ ...form, [name]: value });
-    nav("/payment");
+  }
+
+  function handleLogin(event) {
+    event.preventDefault();
+    const res = logInWithEmailAndPassword(form);
+    console.log("res: ", res);
   }
 
   useEffect(() => {
-    if (loading) {
-      // maybe trigger a loading screen
-      // setText("Loading...");
-      return;
+    if (user) {
+      nav("/dashboard/history");
     }
-    if (user) nav("/dashboard");
-  }, [user, loading]);
+  }, [user]);
 
   return (
     <form className="form">
@@ -60,18 +61,12 @@ const LoginForm = () => {
       </div>
 
       <div className="button-group">
-        <button
-          onClick={() => logInWithEmailAndPassword(form)}
-          className="form-button primary"
-        >
-          {text}
+        <button onClick={handleLogin} className="form-button primary">
+          {loading ? "Logging you in..." : "Login"}
         </button>
-        <button
-          onClick={() => signInWithGoogle}
-          className="form-button secondary"
-        >
-          Register with with Google
-        </button>
+        {/* <button onClick={signInWithGoogle} className="form-button secondary">
+          Login with Google
+        </button> */}
       </div>
     </form>
   );

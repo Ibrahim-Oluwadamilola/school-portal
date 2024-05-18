@@ -1,0 +1,47 @@
+.history {
+  width: 60%;
+}
+
+.history__heading {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.history__list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.history__list__group {
+}
+
+.history__list__group__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.history__list__group__item p {
+  cursor: pointer;
+  font-weight: 100;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.data-group {
+  display: flex;
+  flex-direction: column;
+  transition: all 1s ease-in;
+}
+
+.data-group p {
+  font-family: cursive;
+}
+
+.circle {
+  background: rgb(225, 128, 128);
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+}

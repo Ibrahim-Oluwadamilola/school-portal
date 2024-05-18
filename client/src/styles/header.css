@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 5%;
+  height: 5dvh;
   padding: 1rem;
   background-color: rgb(48, 48, 48);
   color: white;

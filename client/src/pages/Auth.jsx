@@ -1,33 +1,31 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import Header from "../components/Header";
-import RegisterForm from "../components/RegisterForm";
-import LoginForm from "../components/LoginForm";
 
 import "../styles/auth.css";
 
 const Auth = () => {
-  const [header, setHeader] = useState("Register");
-  const [currentScreen, setCurrentScreen] = useState("register");
   const [bottomText, setBottomText] = useState("Already registered? Log in");
+  const location = useLocation();
   const nav = useNavigate();
 
+  const currentScreen = location.pathname.split("/").at(-1);
+  const header = currentScreen[0].toUpperCase() + currentScreen.slice(1);
+
   useEffect(() => {
-    if (currentScreen === "login") {
-      setHeader("Login");
+    if (currentScreen.toLowerCase() === "login") {
       setBottomText("Haven't registered? Register");
     } else {
-      setHeader("Register");
       setBottomText("Already registered? Log in");
     }
   }, [currentScreen]);
 
   const handleBottomText = () => {
     if (currentScreen === "register") {
-      setCurrentScreen("login");
+      nav("login");
     } else {
-      setCurrentScreen("register");
+      nav("register");
     }
   };
 
@@ -42,7 +40,7 @@ const Auth = () => {
           <h2 className="form-wrapper__header">{header}</h2>
 
           <div>
-            {currentScreen === "register" ? <RegisterForm /> : <LoginForm />}
+            <Outlet />
           </div>
 
           <p onClick={handleBottomText} className="form-wrapper__bottom-text">

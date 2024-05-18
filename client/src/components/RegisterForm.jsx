@@ -4,7 +4,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 import {
   auth,
-  logInWithEmailAndPassword,
   registerWithEmailAndPassword,
   signInWithGoogle,
 } from "../config/firebase";
@@ -20,24 +19,22 @@ const RegisterForm = () => {
     email: "",
     password: "",
   });
-  const [text, setText] = useState("Register");
 
   useEffect(() => {
-    if (loading) {
-      // maybe trigger a loading screen
-      //   setText("Loading...");
-      return;
-    }
-
     if (user) {
       console.log("user: ", user);
-      nav("/dashboard");
+      nav("/dashboard/history");
     }
-  }, [user, loading]);
+  }, [user]);
 
   function handleChange(event) {
     const { name, value } = event.target;
     setForm({ ...form, [name]: value });
+  }
+
+  function handleRegister(event) {
+    event.preventDefault();
+    registerWithEmailAndPassword(form);
   }
 
   return (
@@ -76,16 +73,10 @@ const RegisterForm = () => {
       </div>
 
       <div className="button-group">
-        <button
-          onClick={() => registerWithEmailAndPassword(form)}
-          className="form-button primary"
-        >
-          {text}
+        <button onClick={handleRegister} className="form-button primary">
+          Register wih email
         </button>
-        <button
-          onClick={() => signInWithGoogle}
-          className="form-button secondary"
-        >
+        <button onClick={signInWithGoogle} className="form-button secondary">
           Register with Google
         </button>
       </div>
