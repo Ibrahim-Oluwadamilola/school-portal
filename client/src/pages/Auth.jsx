@@ -10,19 +10,19 @@ const Auth = () => {
   const location = useLocation();
   const nav = useNavigate();
 
-  const currentScreen = location.pathname.split("/").at(-1);
-  const header = currentScreen[0].toUpperCase() + currentScreen.slice(1);
+  const currentRoute = location.pathname.split("/").at(-1);
+  const header = currentRoute[0].toUpperCase() + currentRoute.slice(1);
 
   useEffect(() => {
-    if (currentScreen.toLowerCase() === "login") {
+    if (currentRoute.toLowerCase() === "login") {
       setBottomText("Haven't registered? Register");
     } else {
       setBottomText("Already registered? Log in");
     }
-  }, [currentScreen]);
+  }, [currentRoute]);
 
   const handleBottomText = () => {
-    if (currentScreen === "register") {
+    if (currentRoute === "register") {
       nav("login");
     } else {
       nav("register");

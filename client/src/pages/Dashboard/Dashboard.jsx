@@ -1,14 +1,12 @@
 import Header from "../../components/Header";
-import { collectionGroup } from "firebase/firestore";
-import { convertLength } from "@mui/material/styles/cssUtils";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import "../../styles/dashboard.css";
-import { useState } from "react";
 
 const Dashboard = () => {
   const nav = useNavigate();
-  const [currentRoute, setCurrentRoute] = useState("payment");
+  const location = useLocation();
+  const currentRoute = location.pathname.split("/").at(-1);
 
   return (
     <div className="dashboard">
@@ -21,10 +19,7 @@ const Dashboard = () => {
           </h1>
 
           <p
-            onClick={() => {
-              nav("/dashboard/payment");
-              setCurrentRoute("payment");
-            }}
+            onClick={() => nav("payment")}
             className={`dashboard__main__group__link ${
               currentRoute === "payment" ? "active" : "inactive"
             }`}
@@ -32,10 +27,7 @@ const Dashboard = () => {
             Manage payment
           </p>
           <p
-            onClick={() => {
-              nav("/dashboard/history");
-              setCurrentRoute("history");
-            }}
+            onClick={() => nav("history")}
             className={`dashboard__main__group__link ${
               currentRoute === "history" ? "active" : "inactive"
             }`}

@@ -13,7 +13,7 @@ const Main = () => {
   });
 
   const handleClick = () => {
-    if (isUser) nav("/dashboard/history");
+    if (isUser) nav("/dashboard/payment");
     else nav("/auth/register");
   };
 

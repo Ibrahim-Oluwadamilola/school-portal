@@ -32,7 +32,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (user) {
-      nav("/dashboard/history");
+      nav("/dashboard/payment");
     }
   }, [user]);
 

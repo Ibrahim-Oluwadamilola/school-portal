@@ -22,8 +22,7 @@ const RegisterForm = () => {
 
   useEffect(() => {
     if (user) {
-      console.log("user: ", user);
-      nav("/dashboard/history");
+      nav("/dashboard/payment");
     }
   }, [user]);
 
