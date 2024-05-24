@@ -1,0 +1,13 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  width: min(700px, 50dvw);
+  gap: 2rem;
+}
+.details h1 {
+  color: black;
+}
+
+.details__button {
+  width: 35%;
+}

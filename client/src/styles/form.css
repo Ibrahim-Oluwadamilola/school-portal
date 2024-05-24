@@ -3,14 +3,14 @@
   flex-direction: column;
   width: 100%;
   background: #fff;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 10px;
+  gap: 1rem;
 }
 
 .form__group {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem;
   padding: 0.5rem 0;
 }
 

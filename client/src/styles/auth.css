@@ -35,6 +35,7 @@
 .form-wrapper__bottom-text {
   color: rgb(255, 255, 255);
   cursor: pointer;
+  padding: 1rem 0;
 }
 
 .form-wrapper__bottom-text:hover {

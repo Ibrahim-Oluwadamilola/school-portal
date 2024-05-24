@@ -8,7 +8,6 @@ const Header = () => {
   const nav = useNavigate();
   // const user = onAuthStateChanged(auth);
   const user = auth.currentUser;
-  console.log("user: ", user);
 
   function handleLogOut() {
     logout();

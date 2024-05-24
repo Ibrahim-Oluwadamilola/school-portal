@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Dropdown } from "semantic-ui-react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import {
@@ -13,6 +14,7 @@ import "../styles/form.css";
 const LoginForm = () => {
   const nav = useNavigate();
   const [user, loading, error] = useAuthState(auth);
+  const [userType, settUserType] = useState("parent");
 
   const [form, setForm] = useState({
     email: "",
@@ -32,9 +34,30 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (user) {
-      nav("/dashboard/payment");
+      if (userType == "staff") {
+        nav("/dashboard/payment", {
+          state: { userType },
+        });
+      } else {
+        nav("/dashboard/details", {
+          state: { userType },
+        });
+      }
     }
   }, [user]);
+
+  const options = [
+    {
+      key: "parent",
+      text: "Parent",
+      value: "parent",
+    },
+    {
+      key: "staff",
+      text: "Staff",
+      value: "staff",
+    },
+  ];
 
   return (
     <form className="form">
@@ -54,11 +77,18 @@ const LoginForm = () => {
         <input
           type="password"
           name="password"
-          placeholder="password"
+          placeholder="****"
           onChange={handleChange}
           value={form.password}
         />
       </div>
+
+      <Dropdown
+        placeholder="Select user type"
+        fluid
+        selection
+        options={options}
+      />
 
       <div className="button-group">
         <button onClick={handleLogin} className="form-button primary">

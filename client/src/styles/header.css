@@ -8,6 +8,10 @@
   color: white;
 }
 
+.header p {
+  margin: 0;
+}
+
 .header__logo {
   color: #ff7b7b;
   cursor: pointer;

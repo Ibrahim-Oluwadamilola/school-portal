@@ -13,6 +13,8 @@ import Payment from "./pages/Dashboard/components/Payment.jsx";
 import History from "./pages/Dashboard/components/History.jsx";
 import RegisterForm from "./components/RegisterForm.jsx";
 import LoginForm from "./components/LoginForm.jsx";
+import Details from "./pages/Dashboard/components/Details.jsx";
+import "semantic-ui-css/semantic.min.css";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,7 @@ const router = createBrowserRouter([
     children: [
       { path: "payment", element: <Payment /> },
       { path: "history", element: <History /> },
+      { path: "details", element: <Details /> },
     ],
   },
 ]);

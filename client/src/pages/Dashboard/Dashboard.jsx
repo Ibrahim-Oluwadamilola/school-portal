@@ -1,5 +1,7 @@
 import Header from "../../components/Header";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../config/firebase";
 
 import "../../styles/dashboard.css";
 
@@ -8,6 +10,10 @@ const Dashboard = () => {
   const location = useLocation();
   const currentRoute = location.pathname.split("/").at(-1);
 
+  const [user] = useAuthState(auth);
+
+  const { state } = useLocation();
+
   return (
     <div className="dashboard">
       <Header />
@@ -15,25 +21,29 @@ const Dashboard = () => {
       <div className="dashboard__main">
         <div className="dashboard__main__group">
           <h1 className="dashboard__main__group__heading">
-            Welcome to the Dashboard
+            <span>Welcome,</span> {`${user && user?.email}`}
           </h1>
 
-          <p
-            onClick={() => nav("payment")}
-            className={`dashboard__main__group__link ${
-              currentRoute === "payment" ? "active" : "inactive"
-            }`}
-          >
-            Manage payment
-          </p>
-          <p
-            onClick={() => nav("history")}
-            className={`dashboard__main__group__link ${
-              currentRoute === "history" ? "active" : "inactive"
-            }`}
-          >
-            View history
-          </p>
+          {state?.userType && state?.userType !== "parent" && (
+            <>
+              <p
+                onClick={() => nav("payment")}
+                className={`dashboard__main__group__link ${
+                  currentRoute === "payment" ? "active" : "inactive"
+                }`}
+              >
+                Manage payment
+              </p>
+              <p
+                onClick={() => nav("history")}
+                className={`dashboard__main__group__link ${
+                  currentRoute === "history" ? "active" : "inactive"
+                }`}
+              >
+                View history
+              </p>
+            </>
+          )}
         </div>
 
         <Outlet />
