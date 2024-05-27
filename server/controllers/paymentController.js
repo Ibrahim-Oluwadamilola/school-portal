@@ -19,8 +19,7 @@ export const handlePayment = async (req, res) => {
         tx_ref: generateRandomString(10),
         amount,
         currency: "NGN",
-        redirect_url:
-          "https://webhook.site/cd4e398d-5787-44dc-a4ca-408489a1d166",
+        redirect_url: "http://localhost:5173/success",
         meta: {
           consumer_id: 23,
           consumer_mac: "92a3-912ba-1192a",

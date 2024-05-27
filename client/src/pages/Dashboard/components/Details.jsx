@@ -12,6 +12,9 @@ import "../../../styles/details.css";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import firebaseConfig from "../../../config/firebaseConfig";
 
 const fees = [
   { fee: "School Fees", cost: "20,000" },
@@ -20,7 +23,10 @@ const fees = [
 ];
 
 const Details = () => {
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
   const nav = useNavigate();
+
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState("");
@@ -58,17 +64,18 @@ const Details = () => {
       if (response?.success) {
         setIsSuccess(true);
         setData(response?.data[0]);
+        // save transaction details in database
+        const docRef = await addDoc(collection(db, "transactions"), {
+          amount: form[0]?.amount,
+          user: form[0]?.name,
+        });
+        console.log("Document written with ID: ", docRef.id);
       }
     } catch (error) {
       setIsError(true);
     } finally {
       setIsLoading(false);
     }
-    // const url = "";
-    // toast.success("Payment Link generated");
-    // setTimeout(() => {
-    //   nav(url);
-    // }, 1500);
   };
 
   let button = (
@@ -109,7 +116,9 @@ const Details = () => {
 
   return (
     <div className="details">
-      <h1>Details for student: Damilola Ibrahim</h1>
+      <h1 className="details__heading">
+        Details for student: <span>{form[0]?.name}</span>
+      </h1>
 
       <Table celled>
         <TableHeader>

@@ -1,0 +1,27 @@
+.success {
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: gray;
+  color: white;
+}
+
+.success__main {
+  justify-self: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.success__main__heading {
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+
+.success__main__text {
+  font-size: 1.5rem;
+}

@@ -14,7 +14,7 @@ import "../styles/form.css";
 const LoginForm = () => {
   const nav = useNavigate();
   const [user, loading, error] = useAuthState(auth);
-  const [userType, settUserType] = useState("parent");
+  const [userType, setUserType] = useState("parent");
 
   const [form, setForm] = useState({
     email: "",
@@ -26,6 +26,10 @@ const LoginForm = () => {
     setForm({ ...form, [name]: value });
   }
 
+  function handleDropdownChange(e, { name, value }) {
+    setUserType(value);
+  }
+
   function handleLogin(event) {
     event.preventDefault();
     const res = logInWithEmailAndPassword(form);
@@ -33,6 +37,7 @@ const LoginForm = () => {
   }
 
   useEffect(() => {
+    console.log("userType: ", userType);
     if (user) {
       if (userType == "staff") {
         nav("/dashboard/payment", {
@@ -44,7 +49,7 @@ const LoginForm = () => {
         });
       }
     }
-  }, [user]);
+  }, [user, userType]);
 
   const options = [
     {
@@ -88,6 +93,8 @@ const LoginForm = () => {
         fluid
         selection
         options={options}
+        name="userType"
+        onChange={handleDropdownChange}
       />
 
       <div className="button-group">

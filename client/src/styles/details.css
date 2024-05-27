@@ -4,8 +4,12 @@
   width: min(700px, 50dvw);
   gap: 2rem;
 }
-.details h1 {
+.details__heading {
   color: black;
+}
+
+.details__heading span {
+  color: white;
 }
 
 .details__button {

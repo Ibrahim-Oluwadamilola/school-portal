@@ -15,12 +15,17 @@ import RegisterForm from "./components/RegisterForm.jsx";
 import LoginForm from "./components/LoginForm.jsx";
 import Details from "./pages/Dashboard/components/Details.jsx";
 import "semantic-ui-css/semantic.min.css";
+import Success from "./pages/Success.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "/success",
+    element: <Success />,
   },
   {
     path: "/auth",
