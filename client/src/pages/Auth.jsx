@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import Header from "../components/Header";
-
+import payment from "../images/payment.jpg";
 import "../styles/auth.css";
 
 const Auth = () => {
@@ -34,7 +34,7 @@ const Auth = () => {
       <Header />
 
       <div className="auth__main">
-        <h1 className="auth__main__header">WELCOME TO THE PAYMENT PLATFORM</h1>
+        <img className="auth__main__image" src={payment} alt="iamge" />
 
         <div className="form-wrapper">
           <h2 className="form-wrapper__header">{header}</h2>

@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <div className="header">
       <p className="header__logo" onClick={() => nav("/")}>
-        SP
+        BMS
       </p>
 
       <div className="header__group">

@@ -22,7 +22,7 @@ const Main = () => {
       <div className="main__content">
         <div className="main__content__group">
           <p className="main__content__group__text">
-            Welcome to the payment portal.
+            Welcome to the Bursary Management System.
           </p>
           <button onClick={handleClick}>Get started</button>
         </div>

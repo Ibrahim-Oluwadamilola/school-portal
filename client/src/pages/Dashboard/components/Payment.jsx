@@ -27,7 +27,7 @@ const Payment = () => {
   return (
     <div className="payment">
       <div className="payment__group">
-        <h1>Student List</h1>
+        <h1>Payment List</h1>
         {console.log("paymentData: ", paymentData)}
 
         {paymentData?.map(({ user, amount }, id) => (
