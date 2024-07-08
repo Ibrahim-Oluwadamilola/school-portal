@@ -177,7 +177,7 @@ const Details = () => {
 
       <div>
         <div>
-          <p>Selected fees:</p>
+          <em>Selected fees:</em>
           <ul>
             {Object.values(checked).map(({ fee }, id) => (
               <li key={id} style={{ color: "white", fontWeight: "500" }}>
@@ -194,7 +194,7 @@ const Details = () => {
             gap: "1rem",
           }}
         >
-          <p style={{ margin: 0 }}>Total:</p>
+          <em style={{ margin: 0 }}>Total:</em>
           <p style={{ color: "lightblue", fontSize: "1.2rem" }}>{totalCost}</p>
         </div>
       </div>
