@@ -186,12 +186,16 @@ const Details = () => {
           </ul>
         </div>
 
-        <p>
-          Total:{" "}
-          <span style={{ color: "lightblue", fontSize: "1.2rem" }}>
-            {totalCost}
-          </span>
-        </p>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "1rem",
+          }}
+        >
+          <p style={{ margin: 0 }}>Total:</p>
+          <p style={{ color: "lightblue", fontSize: "1.2rem" }}>{totalCost}</p>
+        </div>
       </div>
 
       {button}
