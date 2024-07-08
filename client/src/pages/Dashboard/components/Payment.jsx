@@ -3,6 +3,14 @@ import { collection, getDoc, getDocs, getFirestore } from "firebase/firestore";
 import userData from "../../../utils/userData.js";
 import firebaseConfig from "../../../config/firebaseConfig";
 import { initializeApp } from "firebase/app";
+import {
+  TableRow,
+  TableHeaderCell,
+  TableHeader,
+  TableCell,
+  TableBody,
+  Table,
+} from "semantic-ui-react";
 
 import "../../../styles/payment.css";
 
@@ -30,12 +38,23 @@ const Payment = () => {
         <h1>Payment List</h1>
         {console.log("paymentData: ", paymentData)}
 
-        {paymentData?.map(({ user, amount }, id) => (
-          <div key={id} className="payment__group__list">
-            <p className="payment__group__list__name">{user}</p>
-            <p className="payment__group__list__fee">{amount}</p>
-          </div>
-        ))}
+        <Table striped>
+          <TableHeader>
+            <TableRow>
+              <TableHeaderCell>Student</TableHeaderCell>
+              <TableHeaderCell>Amount</TableHeaderCell>
+            </TableRow>
+          </TableHeader>
+
+          <TableBody>
+            {paymentData?.map(({ user, amount }, id) => (
+              <TableRow key={id}>
+                <TableCell>{user}</TableCell>
+                <TableCell>{amount}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </div>
     </div>
   );
