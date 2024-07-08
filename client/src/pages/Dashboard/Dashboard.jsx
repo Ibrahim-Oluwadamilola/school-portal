@@ -21,7 +21,9 @@ const Dashboard = () => {
       <div className="dashboard__main">
         <div className="dashboard__main__group">
           <h1 className="dashboard__main__group__heading">
-            <span>Welcome,</span> {`${user && user?.email}`}
+            <span>Welcome,</span>
+            <br />
+            {`${user && user?.email}`}
           </h1>
 
           {state?.userType && state?.userType !== "parent" && (
@@ -41,6 +43,14 @@ const Dashboard = () => {
                 }`}
               >
                 View history
+              </p>
+              <p
+                onClick={() => nav("add")}
+                className={`dashboard__main__group__link ${
+                  currentRoute === "add" ? "active" : "inactive"
+                }`}
+              >
+                Add student
               </p>
             </>
           )}

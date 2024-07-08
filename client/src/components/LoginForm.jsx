@@ -3,11 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Dropdown } from "semantic-ui-react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import {
-  auth,
-  logInWithEmailAndPassword,
-  signInWithGoogle,
-} from "../config/firebase";
+import { auth, logInWithEmailAndPassword } from "../config/firebase";
 
 import "../styles/form.css";
 
@@ -32,8 +28,7 @@ const LoginForm = () => {
 
   function handleLogin(event) {
     event.preventDefault();
-    const res = logInWithEmailAndPassword(form);
-    console.log("res: ", res);
+    logInWithEmailAndPassword(form);
   }
 
   useEffect(() => {
@@ -101,9 +96,6 @@ const LoginForm = () => {
         <button onClick={handleLogin} className="form-button primary">
           {loading ? "Logging you in..." : "Login"}
         </button>
-        {/* <button onClick={signInWithGoogle} className="form-button secondary">
-          Login with Google
-        </button> */}
       </div>
     </form>
   );

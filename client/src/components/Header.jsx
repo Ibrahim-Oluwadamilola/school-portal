@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useIdToken } from "react-firebase-hooks/auth";
 import "../styles/header.css";
 import { auth, logout } from "../config/firebase";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Header = () => {
   const nav = useNavigate();
