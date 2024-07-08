@@ -55,6 +55,8 @@ const Details = () => {
   ];
 
   const generateLink = async () => {
+    console.log("generating link...");
+
     if (!totalCost) {
       toast.error("Select a fee");
       return;
@@ -124,7 +126,6 @@ const Details = () => {
   }
 
   if (isError) {
-    toast.error("An error occurred.");
     <Button onClick={generateLink}>Retry</Button>;
   }
 
